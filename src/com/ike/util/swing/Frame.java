@@ -3,6 +3,7 @@ package com.ike.util.swing;
 import com.ike.util.Main;
 import com.ike.util.swing.menu.Menu;
 import com.ike.util.swing.window.BlockWindow;
+import com.ike.util.swing.window.ItemWindow;
 import com.ike.util.swing.window.TaskWindow;
 import com.ike.util.task.CreateModTask;
 import com.ike.util.util.IniFile;
@@ -97,9 +98,20 @@ public class Frame extends JFrame {
         });
         int x = initializeMod.getX() + initializeMod.getWidth() + modLabel.getWidth();
         addBlock.setBounds(x, 50, 200, 30);
+        Button addItem = new Button("Add Item");
+        addItem.addActionListener((e) -> {
+            if (this.handler == null) {
+                return;
+            }
+            System.out.println("Adding Item");
+            ItemWindow window = new ItemWindow(Main.frame);
+            window.setVisible(true);
+        });
+        addItem.setBounds(initializeMod.getX(), 100, 200, 30);
         //this.contentPane.add(modLabel);
         this.contentPane.add(addBlock);
         this.contentPane.add(initializeMod);
+        this.contentPane.add(addItem);
         this.contentPane.add(backgroundLabel);
     }
 

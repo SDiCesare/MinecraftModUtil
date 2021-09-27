@@ -1,6 +1,6 @@
 package @package.init;
 
-import @package.PopItMod;
+import @package.@nameMod;
 import @package.block.*;
 import @package.item.*;
 import net.minecraft.block.Block;

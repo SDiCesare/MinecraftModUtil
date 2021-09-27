@@ -48,6 +48,7 @@ public class CreateModTask extends Task {
         if (!srcSuccess) {
             System.out.println("Can't create src directories");
         }
+        new File(this.getHandler().getPath(), "resources\\META-INF").mkdirs();
         String[] srcSub = {"block", "item", "init"};
         for (String sub : srcSub) {
             boolean mkdirs = new File(java, sub).mkdirs();
@@ -83,5 +84,19 @@ public class CreateModTask extends Task {
         registryText = registryText.replace("@name", this.handler.getName());
         FileUtil.saveFile(this.handler.getPath() + "\\" + this.javaPath + "\\init", "RegistryHandler.java", registryText);
         System.out.println("Registry file created");
+
+        System.out.println("Creating mods.toml");
+        File tomlFile = ResourceHandler.loadResource("templates\\init", "toml.txt");
+        String tomlText = FileUtil.getTextFromFile(tomlFile);
+        tomlText = tomlText.replace("@modid", this.getHandler().getModid()).replace("@name", this.getHandler().getName());
+        FileUtil.saveFile(this.handler.getPath() + "\\resources\\META-INF", "mods.toml", tomlText);
+        System.out.println("Toml Created");
+
+        System.out.println("Creating pack.mcdata");
+        File packFile = ResourceHandler.loadResource("templates\\init", "pack.txt");
+        String packText = FileUtil.getTextFromFile(packFile);
+        packText = packText.replace("@name", this.getHandler().getName());
+        FileUtil.saveFile(this.handler.getPath() + "\\resources", "pack.mcmeta", packText);
+        System.out.println("Pack Created");
     }
 }

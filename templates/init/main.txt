@@ -1,4 +1,4 @@
-package @package
+package @package;
 
 import @package.init.RegistryHandler;
 import net.minecraft.item.ItemGroup;

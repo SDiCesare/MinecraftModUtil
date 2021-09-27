@@ -1,0 +1,11 @@
+package @package.item;
+
+import net.minecraft.item.Item;
+
+public class @name extends Item {
+
+    public @name(Properties properties) {
+        super(properties);
+    }
+
+}
