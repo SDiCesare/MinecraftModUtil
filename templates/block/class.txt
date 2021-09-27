@@ -1,0 +1,9 @@
+package @package.block;
+
+import net.minecraft.block.Block;
+
+public class @name extends Block {
+    public @name(Properties properties) {
+        super(properties);
+    }
+}
