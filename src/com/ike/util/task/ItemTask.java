@@ -48,7 +48,7 @@ public class ItemTask extends Task {
         File file = new File(this.getHandler().getPath() + "\\java\\" + this.getHandler().getPackageName().replace(".", "\\") + "\\init\\RegistryHandler.java");
         String registryText = FileUtil.getTextFromFile(file);
         String s = FileUtil.appendAt(registryText, "\tpublic static final RegistryObject<Item> " + getCapsName() + ";\n", registryText.indexOf(ITEM_OBJECT) + ITEM_OBJECT.length());
-        s = FileUtil.appendAt(s, "\t\t" + this.getCapsName() + " = ITEMS.register(\"" + this.getCapsName().toLowerCase() + "\", () -> new " + this.name + "(new Item.Properties()));\n", s.indexOf(ITEM_INIT) + ITEM_INIT.length());
+        s = FileUtil.appendAt(s, "\t\t" + this.getCapsName() + " = ITEMS.register(\"" + this.getCapsName().toLowerCase() + "\", () -> new " + this.name + "(new Item.Properties().tab(" + getHandler().getName() + "Mod.MOD_GROUP)));\n", s.indexOf(ITEM_INIT) + ITEM_INIT.length());
         FileUtil.saveFile(file.getParent(), file.getName(), s);
         System.out.println("Added Item To Registry");
     }
